@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Keyboard Samples</string>
+    <string name="capaitalizes_each_sentence">Capaitalizes each sentence</string>
+    <string name="email">Email</string>
+    <string-array name="options">
+        <item>Home</item>
+        <item>Work</item>
+        <item>Mobile</item>
+        <item>Other</item>
+    </string-array>
+</resources>
