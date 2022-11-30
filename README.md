@@ -9,7 +9,7 @@
 
 
 <details open>
-<summary style="font-size:25px;">Suggests spelling corrections and capitalizes each new sentence</summary>
+<summary ><h2>Suggests spelling corrections and capitalizes each new sentence</h2></summary>
 
 To capitalize each sentence we use the following attribute: `android:inputType="textCapSentences"`
 
@@ -68,7 +68,7 @@ editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 ---
 
 <details open>
-<summary style="font-size:25px;">Keyboard that offers the key "@"</summary>
+<summary><h2>Keyboard that offers the key "@"</h2></summary>
 
 For this we use the attribute `android:inputType="textEmailAddress"`: 
 
@@ -107,7 +107,7 @@ public void sendEmail(View view) {
 ---
 
 <details open >
-<summary style="font-size:25px;">Keyboard that offers the numeric keyboard</summary>
+<summary ><h2>Keyboard that offers the numeric keyboard</h2></summary>
 
 For this we use the attribute `android:inputType="phone"`:
 
@@ -147,7 +147,7 @@ public void call(View view) {
 ---
 
 <details open >
-<summary style="font-size:25px;">Numeric keyboard with spinner </summary>
+<summary><h2>Numeric keyboard with spinner</h2> </summary>
 
 I declare a spiner and a TextView. 
 
