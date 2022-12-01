@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editPhone;
     Spinner spinner;
     EditText editPhone2;
-
+    int iCurrentSelection;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         editEmail = (EditText) findViewById(R.id.editTextTextEmailAddress);
         editPhone = (EditText) findViewById(R.id.editTextPhone);
         editPhone2 = (EditText) findViewById(R.id.editTextPhone2);
-
+        this.iCurrentSelection = -1;
         // if the key 'done'is pressed the toast is show and the keyboard is closed
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -130,19 +131,31 @@ public class MainActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinner);
         editPhone2 = (EditText) findViewById(R.id.editTextPhone2);
         TextView textView = (TextView) findViewById(R.id.textView_RESULT);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ArrayAdapter<String> spinnerCountShoesArrayAdapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_dropdown_item,
+                getResources().getStringArray(R.array.options));
+        spinner.setAdapter(spinnerCountShoesArrayAdapter);
+        if (editPhone2.getText().length() > 0) {
+            textView.setText("Home" + ": " + editPhone2.getText());
 
-            public void onItemSelected(AdapterView<?> parentView,
-                    View selectedItemView, int position, long id) {
-                String res = parentView.getItemAtPosition(position).toString();
-                if (editPhone2.getText().length() > 0) {
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
+                public void onItemSelected(AdapterView<?> parentView,
+                                           View selectedItemView, int position, long id) {
+
+                    String res = parentView.getItemAtPosition(position).toString();
                     Toast.makeText(MainActivity.this, res + ": " + editPhone2.getText(), Toast.LENGTH_SHORT).show();
                     textView.setText(res + ": " + editPhone2.getText());
-                }
-            }
 
-            public void onNothingSelected(AdapterView<?> arg0) {
-            }
-        });
+                }
+
+                public void onNothingSelected(AdapterView<?> arg0) {
+                }
+
+
+            });
+
+        }
     }
 }
